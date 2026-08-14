@@ -1,6 +1,6 @@
 const $ = (id) => document.getElementById(id);
 
-const symbols = { USD:"$", GBP:"£", EUR:"€", CAD:"C$", AUD:"A$" };
+const symbols = { USD:"US $", GBP:"£", EUR:"€", CAD:"CA $", AUD:"A$" };
 
 function val(id) {
   const el = $(id);
@@ -16,7 +16,9 @@ function money(value) {
     currency: $("currency").value,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
-  }).format(safe);
+  }).format(safe)
+    .replace(/US\$/g, "US $")
+    .replace(/CA\$/g, "CA $");
 }
 
 function timeframe() {
