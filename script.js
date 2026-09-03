@@ -14,8 +14,7 @@ function applyTheme(theme) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  applyTheme(saved === "light" ? "light" : "dark");
+  applyTheme("light");
 }
 
 function val(id) {
