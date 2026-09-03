@@ -6,6 +6,7 @@ const THEME_KEY = "mrmrr-break-even-theme";
 function applyTheme(theme) {
   const light = theme === "light";
   document.documentElement.dataset.theme = light ? "light" : "dark";
+  document.body.classList.toggle("light-theme", light);
   $("themeIcon").textContent = light ? "🌙" : "☀️";
   $("themeLabel").textContent = light ? "Dark mode" : "Light mode";
   $("themeToggle").setAttribute("aria-pressed", String(light));
@@ -141,7 +142,7 @@ $("startDate").addEventListener("change", calculate);
 $("endDate").addEventListener("change", calculate);
 $("resetBtn").addEventListener("click", resetCalculator);
 $("themeToggle").addEventListener("click", () => {
-  const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+  const next = document.body.classList.contains("light-theme") ? "dark" : "light";
   localStorage.setItem(THEME_KEY, next);
   applyTheme(next);
 });
